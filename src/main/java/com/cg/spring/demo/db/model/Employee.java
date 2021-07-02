@@ -13,7 +13,7 @@ public class Employee {
 
 	@Id
 	@Column
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eid;
 
 	@Column
