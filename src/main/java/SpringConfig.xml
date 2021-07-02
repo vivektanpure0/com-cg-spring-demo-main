@@ -1,0 +1,147 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- This is a comment. -->
+	<!-- bean definition -->
+	<!-- <bean id="employee" class="com.cg.spring.demo.Employee"> </bean> -->
+
+	<!-- Property injection / Setter injection -->
+	<bean id="employee" class="com.cg.spring.demo.Employee">
+		<property name="ename">
+			<value>Vaman Deshmukh</value>
+		</property>
+	</bean>
+
+	<bean id="employee2" class="com.cg.spring.demo.Employee">
+		<property name="eid">
+			<value>102</value>
+		</property>
+		<property name="ename">
+			<value>Suresh Reddy</value>
+		</property>
+		<property name="salary">
+			<value>10.75</value>
+		</property>
+	</bean>
+
+	<!-- Constructor injection -->
+	<bean id="employee3" class="com.cg.spring.demo.Employee">
+		<constructor-arg value="Sonu" type="java.lang.String"></constructor-arg>
+	</bean>
+
+	<bean id="employee4" class="com.cg.spring.demo.Employee">
+		<constructor-arg value="101" type="int"></constructor-arg>
+		<constructor-arg value="Monu" type="java.lang.String"></constructor-arg>
+		<constructor-arg value="10.5" type="double"></constructor-arg>
+	</bean>
+
+	<!-- Inner bean - using property injection -->
+	<bean id="employee5" class="com.cg.spring.demo.Employee">
+		<property name="eid">
+			<value>105</value>
+		</property>
+		<property name="ename">
+			<value>Aaa Aaa</value>
+		</property>
+		<property name="salary">
+			<value>20.45</value>
+		</property>
+		<property name="department">
+			<bean id="dept" class="com.cg.spring.demo.Department">
+				<property name="id">
+					<value>10</value>
+				</property>
+				<property name="name">
+					<value>HR</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Inner bean - using constructor injection -->
+	<bean id="employee6" class="com.cg.spring.demo.Employee">
+		<constructor-arg value="106" type="int"></constructor-arg>
+		<constructor-arg value="Tanmay"
+			type="java.lang.String"></constructor-arg>
+		<constructor-arg value="10.6" type="double"></constructor-arg>
+		<constructor-arg type="com.cg.spring.demo.Department">
+			<bean id="dept" class="com.cg.spring.demo.Department">
+				<constructor-arg value="20" type="int"></constructor-arg>
+				<constructor-arg value="Sales"
+					type="java.lang.String"></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<!-- Collection injection - using property injection -->
+	<bean id="department3" class="com.cg.spring.demo.Department">
+		<property name="id">
+			<value>30</value>
+		</property>
+		<property name="name">
+			<value>Admin</value>
+		</property>
+		<property name="functions">
+			<list>
+				<value>Payroll</value>
+				<value>Security</value>
+				<value>Admin</value>
+				<value>Engagement</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- <bean id="department4" class="com.cg.spring.demo.Department"> <property 
+		name="id"> <value>40</value> </property> <property name="name"> <value>Development</value> 
+		</property> <property name="functions"> <list> <value>Coding</value> <value>Testing</value> 
+		<value>Deployment</value> </list> </property> </bean> -->
+	<!-- Collection injection in inner bean - using constructor injection -->
+	<bean id="employee7" class="com.cg.spring.demo.Employee">
+		<constructor-arg value="107" type="int"></constructor-arg>
+		<constructor-arg value="Pratik"
+			type="java.lang.String"></constructor-arg>
+		<constructor-arg value="78.45" type="double"></constructor-arg>
+		<constructor-arg type="com.cg.spring.demo.Department">
+			<bean id="dept" class="com.cg.spring.demo.Department">
+				<constructor-arg value="20" type="int"></constructor-arg>
+				<constructor-arg value="Sales"
+					type="java.lang.String"></constructor-arg>
+				<constructor-arg>
+					<list>
+						<value>Market research</value>
+						<value>Promotion</value>
+						<value>Advertisements</value>
+						<value>Discount</value>
+					</list>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<!-- Autowiring using constructor injection -->
+	<bean id="employee9" class="com.cg.spring.demo.Employee"
+		autowire="constructor">
+		<constructor-arg value="109" type="int"></constructor-arg>
+		<constructor-arg value="Amit" type="java.lang.String"></constructor-arg>
+		<constructor-arg value="22.22" type="double"></constructor-arg>
+		<constructor-arg type="com.cg.spring.demo.Department"
+			ref="department3"></constructor-arg>
+	</bean>
+
+	<!-- Autowiring using constructor injection -->
+	<bean id="employee10" class="com.cg.spring.demo.Employee"
+		autowire="byType">
+		<constructor-arg value="110" type="int"></constructor-arg>
+		<constructor-arg value="Sonu" type="java.lang.String"></constructor-arg>
+		<constructor-arg value="45.50" type="double"></constructor-arg>
+	</bean>
+
+	<!-- Autowiring using constructor injection -->
+	<!-- <bean id="employee11" class="com.cg.spring.demo.Employee" autowire="byName"> 
+		<constructor-arg value="111" type="int"></constructor-arg> <constructor-arg 
+		value="Monu" type="java.lang.String"></constructor-arg> <constructor-arg 
+		value="45.50" type="double"></constructor-arg> </bean> -->
+</beans>
+
