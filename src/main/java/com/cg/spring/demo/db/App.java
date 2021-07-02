@@ -4,7 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import com.cg.spring.demo.db.service.EmployeeService;
 
-
+// 
 
 @ComponentScan
 public class App {
